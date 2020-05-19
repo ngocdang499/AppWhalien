@@ -1,0 +1,324 @@
+#title {
+    -fx-font: 56px Monospace;
+    -fx-text-fill: #cec9cb;
+    -fx-font-weight: bold;
+    -fx-padding:60 0 0 50;
+}
+
+#intro {
+    -fx-font: 16px Monospace;
+    -fx-text-fill: #cec9cb;
+    -fx-padding:30 0 0 50;
+    -fx-word-wrap: break-word;
+    -fx-alignment: CENTER;
+}
+
+#basePane {
+    -fx-pref-width: 800px;
+    -fx-pref-height: 500px;
+    -fx-background-color:  linear-gradient(#245198 0%,  #562b5c 100%);
+}
+
+#startBtn, #darktmBtn, #lighttmBtn  {
+    -fx-background-color: linear-gradient(#245198 0%,  #7F00FF 100%);
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c4c6cf;
+    -fx-font-family: Cantarella;
+}
+
+
+#startBtn:hover {
+    -fx-background-color: linear-gradient(#2475fc 0%, #6910ca 100%);
+}
+
+/*Working UI*/
+
+#workingPane {
+    -fx-pref-width: 800px;
+    -fx-pref-height: 500px;
+    -fx-background-color:  #1a1c33;
+}
+
+#menuBox{
+    -fx-background-color: #272d47;
+}
+
+#browsePane {
+    -fx-background-color:  #20263e;
+    -fx-border-radius: 20;
+    -fx-pref-width: 466px;
+    -fx-pref-height: 180;
+}
+
+.scroll-pane .scroll-bar:horizontal .track,
+.scroll-pane .scroll-bar:vertical .track{
+    -fx-background-color: #20263e;
+    -fx-border-color: #20263e;
+
+
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-pref-height: 180;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #53567e;
+    -fx-background-radius: 10;
+
+}
+
+.scroll-bar:horizontal {
+    -fx-pref-height: 16.5;
+    -fx-padding: 5;
+}
+
+.scroll-bar:pressed .thumb {
+    -fx-font-size: 15;
+    -fx-background-color: #8c8c93;
+}
+
+.scroll-pane  .scroll-bar .increment-arrow,
+.scroll-pane  .scroll-bar .decrement-arrow
+ {
+	-fx-shape: " ";
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+	-fx-padding:0;
+}
+/*Encrypt/ decrypt options
+.button {
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Lato Semibold;
+    -fx-pref-height: 30px;
+    -fx-max-height: 30px;
+}
+
+
+
+.text-field {
+    -fx-background-color: #222230;
+    -fx-font-size: 14px;
+    -fx-fill: #b1b1b6;
+    -fx-font-family: Lato Semibold;
+    -fx-pref-width: 130px;
+    -fx-max-width: 130px;
+    -fx-border-color: #363849;
+    -fx-border-radius: 6;
+}
+
+.line {
+    -fx-stroke: #363849;
+    -fx-stroke-width: 1.5;
+    -fx-alignment: 5 0 0 0;
+}
+
+.check-box {
+    -fx-font-size: 14px;
+    -fx-text-fill: #b1b1b6;
+    -fx-font-weight: bold;
+    -fx-font-family: Lato Semibold;
+}
+*/
+.menu-button {
+    -fx-background-color: transparent;
+}
+
+.menu-button: hover {
+    -fx-background-color: #1a1c33;
+    -fx-opacity: 0.8;
+}
+
+.zone-box {
+    -fx-background-color: #20263e;
+    -fx-background-radius: 15;
+}
+
+.zone-Dbox {
+    -fx-background-color: #20263e;
+    -fx-background-radius: 15;
+}
+
+.zone-Lbox {
+    -fx-background-color: #ebe9ff;
+    -fx-background-radius: 15;
+}
+
+.label {
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #53567e;
+    -fx-font-family: Cantarell;
+    -fx-padding: 5 0 5 8;
+}
+
+.radio-button {
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #878a9a;
+    -fx-font-family: Cantarell;
+    -fx-padding: 5 0 5 8;
+
+}
+
+.radio-button .radio{
+    -fx-pref-width: 12;
+    -fx-pref-height: 12;
+    -fx-background-color: #32235a;
+    -fx-border-color: #8346a3;
+    -fx-border-radius: 5;
+}
+
+.radio-button:selected .radio .dot{
+    -fx-background-color: #8346a3;
+    -fx-border-color: #32235a;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+}
+
+.option-button {
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Cantarell;
+    -fx-pref-height: 20px;
+    -fx-max-height: 20px;
+    -fx-padding: 6 0 5 8;
+}
+
+.option-button:hover{
+    -fx-underline: true;
+}
+
+.line {
+    -fx-stroke: #53567e;
+    -fx-stroke-width: 1.5;
+    -fx-alignment: 5 0 0 0;
+}
+
+.menu-bar {
+    -fx-background-color: black ;
+    -fx-opacity: 0.5;
+    -fx-border-width: 2.0;
+
+}
+.menu-bar .label {
+    -fx-font-size: 14.0 pt;
+    -fx-font-family: Cantarell;
+    -fx-text-fill: #c4c6cf;
+    -fx-font-weight: bold;
+    -fx-padding: 10.0px;
+
+}
+.menu-bar .menu-button:hover, .menu-bar .menu-button:focused, .menu-bar .menu-button:showing {
+    -fx-background: black ;
+    -fx-opacity: 0.5;
+    -fx-text-fill: #c4c6cf;
+}
+
+.menu-item {
+    -fx-padding: 0em 0em 0.0em 0em;
+    -fx-text-fill: #c4c6cf;
+    -fx-background: transparent;
+    -fx-pref-width: 360;
+}
+.menu-item .label{
+    -fx-font-size: 14.0 pt;
+}
+.menu-item .label:hover{
+    -fx-underline: true;
+}
+.context-menu {
+    -fx-background-color: #20263e;
+    -fx-border-color: transparent;
+}
+
+.text-field {
+    -fx-pref-height: 19;
+    -fx-max-height: 19;
+    -fx-background-color: #32235a;
+    -fx-border-color: #8346a3;
+    -fx-border-radius: 5;
+    -fx-font-size: 14.0 pt;
+    -fx-font-family: "Lato Medium";
+    -fx-font-style: italic;
+    -fx-text-fill: #c4c6cf;
+}
+
+#outerCircle {
+    -fx-fill: transparent;
+    -fx-stroke-width: 20;
+    -fx-stroke: linear-gradient(#6910ca 0%, #2475fc 100%);
+}
+
+#innerCircle {
+    -fx-fill: #20263e;
+    -fx-radius: 90;
+    -fx-stroke: #20263e;
+}
+
+#innerDCircle {
+    -fx-fill: #20263e;
+    -fx-radius: 90;
+    -fx-stroke: #20263e;
+}
+
+#innerLCircle {
+    -fx-fill: #ebe9ff;
+    -fx-radius: 90;
+    -fx-stroke: #ebe9ff;
+}
+
+#progressCircle {
+    -fx-fill: transparent;
+    -fx-stroke-width: 20;
+    -fx-stroke: linear-gradient(#a5fecb 0%, #20BDFF 50%,  #5433FF 100%);
+}
+
+#progressLb {
+    -fx-font-family: "Lato";
+    -fx-font-size: 52.0 pt;
+    -fx-text-fill: #c4c6cf;
+}
+
+.file-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-radius:10;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: Cantarell;
+    -fx-pref-height: 120px;
+    -fx-max-height: 120px;
+    -fx-pref-width: 100px;
+    -fx-max-width: 100px;
+    -fx-text-fill: #c4c6cf;
+}
+
+.file-button: hover {
+    -fx-background-color: #53567e;
+}
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="basePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../UI_CSS/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whalien.welcomeController">
+   <children>
+      <AnchorPane id="basePane" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: transparent;">
+         <children>
+            <VBox prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: transparent;">
+               <children>
+                  <Label id="title" text="Whalien">
+                     <padding>
+                        <Insets left="50.0" top="50.0" />
+                     </padding>
+                  </Label>
+                  <Label id="intro" text="WHALIEN is a cryptography app that allows you to encrypt and derypt your file with many options. Getting START by clicking the little cutie whale below and secure your file now!" wrapText="true" />
+                  <Button id="startBtn" fx:id="startBtn" mnemonicParsing="false" onMouseClicked="#onStartBtnClick" prefWidth="140.0" text="START">
+                     <VBox.margin>
+                        <Insets bottom="50.0" left="100.0" top="40.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/wicon5_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label text="Version 1.0" textFill="#c3adad">
+                     <VBox.margin>
+                        <Insets left="30.0" top="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <ImageView fitHeight="500.0" fitWidth="500.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/whalien4_1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

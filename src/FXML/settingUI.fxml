@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="basePane" prefHeight="82.0" prefWidth="474.0" stylesheets="@../UI_CSS/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whalien.SettingController">
+   <children>
+      <AnchorPane id="workingPane" prefHeight="157.0" prefWidth="164.0">
+         <children>
+            <HBox prefHeight="500.0" prefWidth="800.0" spacing="45.0">
+               <children>
+                  <VBox id="menuBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="40.0" spacing="30.0">
+                     <children>
+                        <Button fx:id="settingBtn" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/setting1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets left="2.0" top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="decryptBtn" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/encrypt1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="encryptBtn" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/decrypt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="darktmBox" layoutX="70.0" layoutY="10.0" prefHeight="500.0" prefWidth="280.0" style="-fx-background-radius: 20; -fx-background-color: #1a1c33; -fx-border-radius: 20; -fx-border-color: #7465ff; -fx-border-width: 1.5;" stylesheets="@../UI_CSS/DarkTheme.css">
+                     <children>
+                        <AnchorPane prefHeight="280.0" prefWidth="280.0" styleClass="zone-Dbox">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="DARK THEME" textFill="#c9a1a1" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font name="Cantarell Regular" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Arc id="progressCircle" fill="#c21eff" layoutX="138.0" layoutY="146.0" length="270.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                              <Circle id="innerDCircle" fill="DODGERBLUE" layoutX="138.0" layoutY="146.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="56.0" />
+                              <Circle id="outerCircle" fill="DODGERBLUE" layoutX="138.0" layoutY="145.0" opacity="0.45" radius="110.0" stroke="BLACK" strokeType="INSIDE" />
+                              <ImageView fitHeight="148.0" fitWidth="270.0" layoutX="3.0" layoutY="80.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/blue-whale.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Line endX="251.25" styleClass="line">
+                           <VBox.margin>
+                              <Insets left="5.0" top="20.0" />
+                           </VBox.margin>
+                        </Line>
+                        <HBox prefHeight="21.0" prefWidth="275.0">
+                           <VBox.margin>
+                              <Insets left="5.0" top="6.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label layoutX="10.0" layoutY="348.0" text="Pick Dark Theme" textFill="#c9a1a1">
+                           <font>
+                              <Font name="Cantarell Regular" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Line endX="251.25" layoutX="16.0" layoutY="377.0" styleClass="line">
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Line>
+                        <Button id="darktmBtn" fx:id="darktmBtn" mnemonicParsing="false" onMouseClicked="#onThemeBtnClick" prefHeight="18.0" prefWidth="250.0" text="PICK">
+                           <VBox.margin>
+                              <Insets left="5.0" top="6.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </VBox>
+                  <VBox fx:id="lighttmBox" layoutX="80.0" layoutY="30.0" prefHeight="500.0" prefWidth="280.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #7465ff; -fx-border-width: 1.5;" stylesheets="@../UI_CSS/LightTheme.css">
+                     <children>
+                        <AnchorPane prefHeight="280.0" prefWidth="280.0" styleClass="zone-Lbox">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="LIGHT THEME" textFill="#c9a1a1" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font name="Cantarell Regular" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Arc id="progressCircle" fill="#c21eff" layoutX="138.0" layoutY="146.0" length="270.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                              <Circle id="innerLCircle" fill="DODGERBLUE" layoutX="138.0" layoutY="146.0" radius="92.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="53.0" />
+                              <Circle id="outerCircle" fill="DODGERBLUE" layoutX="138.0" layoutY="145.0" opacity="0.45" radius="110.0" stroke="BLACK" strokeType="INSIDE" />
+                              <ImageView fitHeight="148.0" fitWidth="270.0" layoutX="3.0" layoutY="80.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/blue-whale.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Line endX="251.25" styleClass="line">
+                           <VBox.margin>
+                              <Insets left="5.0" top="20.0" />
+                           </VBox.margin>
+                        </Line>
+                        <HBox prefHeight="21.0" prefWidth="275.0" style="-fx-background-radius: 20;">
+                           <VBox.margin>
+                              <Insets left="5.0" top="6.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label layoutX="10.0" layoutY="348.0" text="Pick Light Theme" textFill="#c9a1a1">
+                           <font>
+                              <Font name="Cantarell Regular" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Line endX="251.25" layoutX="16.0" layoutY="377.0" styleClass="line">
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Line>
+                        <Button id="lighttmBtn" fx:id="lighttmBtn" mnemonicParsing="false" onMouseClicked="#onThemeBtnClick" prefHeight="18.0" prefWidth="250.0" text="PICK">
+                           <VBox.margin>
+                              <Insets left="5.0" top="6.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
