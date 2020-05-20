@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="82.0" prefWidth="474.0" stylesheets="@../UI_CSS/LightTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whalien.EncryptController">
+<AnchorPane prefHeight="82.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whalien.EncryptController">
    <children>
       <AnchorPane id="workingPane" prefHeight="157.0" prefWidth="164.0">
          <children>
@@ -84,7 +84,15 @@
                               </Label>
                               <ScrollPane prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                 <content>
-                                  <AnchorPane id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="413.0" />
+                                  <AnchorPane id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="413.0">
+                                       <children>
+                                          <MenuButton layoutX="32.0" layoutY="35.0" mnemonicParsing="false" text="MenuButton">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                                            </items>
+                                          </MenuButton>
+                                       </children></AnchorPane>
                                 </content>
                                  <VBox.margin>
                                     <Insets top="5.0" />
