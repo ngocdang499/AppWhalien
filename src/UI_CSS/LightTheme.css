@@ -249,8 +249,8 @@
 .menu-item .label{
     -fx-font-size: 14.0 pt;
 }
-.menu-item .label:hover{
-    -fx-underline: true;
+.menu-item: focused{
+    -fx-background-color: #969A9F;
 }
 .context-menu {
     -fx-background-color: #ebe9ff;
