@@ -1,7 +1,10 @@
 package Whalien;
 
 import com.sun.tools.javac.Main;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,18 +21,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 
-import java.awt.event.ActionEvent;
 import java.io.File;
-
+import java.util.ArrayList;
 
 
 public class EncryptController extends Controller{
 
     private static boolean theme = true;
-    private String[] musicLst = {"mp3", "wav"};
-    private String[] videoLst = {"mp4", "wav"};
-    private String[] pictureLst = {"png", "jpg", "jpeg", "gif", "tiff"};
-
+    private ArrayList<String> importFile = new ArrayList<String>();
 
     @FXML
     AnchorPane basePane;
@@ -109,7 +108,7 @@ public class EncryptController extends Controller{
         File selectedDirectory = dirChooser.showDialog(new Stage());
         String path = "";
 
-        if (selectedDirectory.getAbsolutePath() != null)
+        if (selectedDirectory != null)
             path = selectedDirectory.getAbsolutePath();
 
         if (!path.isBlank()) {
@@ -118,6 +117,7 @@ public class EncryptController extends Controller{
             File[] fileList = folder.listFiles();
             for (File f : fileList) {
                 if (!f.isDirectory()) {
+                    importFile.add(f.getPath());
                     addFileBtn(f.getName());
                 }
             }
@@ -130,13 +130,14 @@ public class EncryptController extends Controller{
         File selectedFile = fileChooser.showOpenDialog(new Stage());
         String path = "";
 
-        if (selectedFile.getAbsolutePath() != null)
+        if (selectedFile != null)
             path = selectedFile.getAbsolutePath();
 
         if (!path.isBlank()) {
             // Get all file in list
             File file = new File(path);
             if (!file.isDirectory()) {
+                importFile.add(file.getPath());
                 addFileBtn(file.getName());
             }
         }
@@ -151,13 +152,13 @@ public class EncryptController extends Controller{
         image.setFitWidth(80);
         fileBtn.setGraphic(image);
         fileBtn.getStyleClass().add("file-button");
-
+        fileBtn.setId(Integer.toString(importFile.size()));
         fileBtn.setOnMouseClicked(e -> {
             try {
 
                 String isPick = fileBtn.getId();
-                if (isPick == null) {
-                    fileBtn.setId("pick");
+                if (!isPick.contains("-pick")) {
+                    fileBtn.setId(fileBtn.getId() + "-pick");
                     if (theme)
                         fileBtn.setStyle("-fx-border-color: #53567e; -fx-border-width: 2px");
                     else
@@ -165,7 +166,7 @@ public class EncryptController extends Controller{
                 }
                 else {
                     fileBtn.setStyle("-fx-border-color: transparent");
-                    fileBtn.setId(null);
+                    fileBtn.setId(fileBtn.getId().replace("-pick",""));
                 }
 
             } catch (Exception ex) {
@@ -179,7 +180,36 @@ public class EncryptController extends Controller{
     @FXML
     MenuButton menuBtn;
 
-    public void onMenuItemClick(MouseEvent e) throws Exception{
+    public void onMenuItemClick(ActionEvent e) throws Exception{
+        MenuItem item = (MenuItem) e.getSource();
+        menuBtn.setText(item.getText());
+
+    }
+
+    public void onSelectAll(ActionEvent e) throws Exception {
+        ObservableList<Node> btnList = fileBox.getChildren();
+        RadioButton radioBtn = (RadioButton) e.getSource();
+        if (radioBtn.isSelected()) {
+            for (Node btn : fileBox.getChildren()) {
+                if (!btn.getId().contains("-pick")) {
+                    btn.setId(btn.getId() + "-pick");
+                    if (theme)
+                        btn.setStyle("-fx-border-color: #53567e; -fx-border-width: 2px");
+                    else
+                        btn.setStyle("-fx-border-color: linear-gradient(#a884dd 0%, #8bacf1 100%); -fx-border-width: 2px");
+                }
+
+            }
+        }
+        else {
+            for (Node btn : fileBox.getChildren()) {
+                if (btn.getId().contains("-pick")) {
+                    btn.setId(btn.getId().replace("-pick",""));
+                    btn.setStyle("-fx-border-color: transparent");
+                }
+
+            }
+        }
 
     }
 
