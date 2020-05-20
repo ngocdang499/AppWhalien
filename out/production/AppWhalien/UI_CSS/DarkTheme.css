@@ -219,23 +219,9 @@
     -fx-alignment: 5 0 0 0;
 }
 
-.menu-bar {
-    -fx-background-color: black ;
-    -fx-opacity: 0.5;
-    -fx-border-width: 2.0;
-
-}
-.menu-bar .label {
-    -fx-font-size: 14.0 pt;
-    -fx-font-family: Cantarell;
-    -fx-text-fill: #c4c6cf;
-    -fx-font-weight: bold;
-    -fx-padding: 10.0px;
-
-}
-.menu-bar .menu-button:hover, .menu-bar .menu-button:focused, .menu-bar .menu-button:showing {
+.menu-button:hover,  .menu-button:focused,  .menu-button:showing {
     -fx-background: black ;
-    -fx-opacity: 0.5;
+
     -fx-text-fill: #c4c6cf;
 }
 
@@ -248,9 +234,10 @@
 .menu-item .label{
     -fx-font-size: 14.0 pt;
 }
-.menu-item .label:hover{
-    -fx-underline: true;
+.menu-item: focused{
+    -fx-background-color: #303459;
 }
+
 .context-menu {
     -fx-background-color: #20263e;
     -fx-border-color: transparent;
@@ -316,6 +303,8 @@
     -fx-pref-width: 100px;
     -fx-max-width: 100px;
     -fx-text-fill: #c4c6cf;
+    -fx-content-display: top;
+    -fx-alignment: center;
 }
 
 .file-button: hover {

@@ -86,28 +86,7 @@
                                 <content>
                                   <AnchorPane id="browsePane" maxHeight="180.0" minHeight="180.0" prefHeight="180.0">
                                        <children>
-                                          <HBox fx:id="fileBox" maxHeight="180.0" minHeight="180.0" prefHeight="180.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">
-                                             <children>
-                                                <Button alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" styleClass="file-button" text="BTS.mp3" textAlignment="CENTER">
-                                                   <graphic>
-                                                      <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../Image/imgicon.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </Button>
-                                                <Button alignment="CENTER" contentDisplay="TOP" layoutX="370.0" layoutY="10.0" maxHeight="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" styleClass="file-button" text="Button" textAlignment="CENTER">
-                                                   <graphic>
-                                                      <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../Image/imgicon.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </Button>
-                                             </children>
-                                          </HBox>
+                                          <HBox fx:id="fileBox" maxHeight="180.0" minHeight="180.0" prefHeight="180.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0" />
                                        </children></AnchorPane>
                                 </content>
                                  <VBox.margin>
@@ -116,7 +95,7 @@
                               </ScrollPane>
                               <HBox prefHeight="50.0" prefWidth="280.0" spacing="10.0">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" text="Select All" />
+                                    <RadioButton mnemonicParsing="false" onAction="#onSelectAll" prefHeight="34.0" prefWidth="122.0" text="Select All" />
                                     <Button mnemonicParsing="false" onMouseClicked="#onOpenDirBtn" styleClass="option-button" text="Open Folder" textFill="#2bc7ac">
                                        <HBox.margin>
                                           <Insets left="30.0" />
@@ -155,13 +134,13 @@
                               <Insets left="25.0" />
                            </VBox.margin>
                         </Line>
-                        <MenuButton mnemonicParsing="false" prefHeight="28.0" prefWidth="360.0" text="Cryptosystem">
+                        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="28.0" prefWidth="360.0" text="Cryptosystems">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="RSA" />
-                            <MenuItem mnemonicParsing="false" text="DES" />
+                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="RSA" />
+                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="DES" />
                           </items>
                            <VBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="20.0" top="5.0" />
                            </VBox.margin>
                         </MenuButton>
                         <Label layoutX="30.0" layoutY="348.0" text="Output path" textFill="#c9a1a1">
@@ -169,7 +148,7 @@
                               <Font name="Cantarell Regular" size="16.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="20.0" top="21.0" />
+                              <Insets left="20.0" top="15.0" />
                            </VBox.margin>
                         </Label>
                         <Line endX="350.0" layoutX="36.0" layoutY="377.0" styleClass="line">
@@ -223,7 +202,7 @@
                               <Font name="Cantarell Regular" size="16.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="38.0" />
+                              <Insets top="37.0" />
                            </VBox.margin>
                         </Label>
                         <Line endX="251.25" styleClass="line">
