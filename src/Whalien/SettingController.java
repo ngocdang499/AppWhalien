@@ -58,6 +58,10 @@ public class SettingController extends Controller{
                 nextScene = "encryptUI.fxml";
                 title = "Encryption";
                 break;
+            case "hashBtn":
+                nextScene = "hashUI.fxml";
+                title = "Integrity Check";
+                break;
         }
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../FXML/"+nextScene));/* Exception */

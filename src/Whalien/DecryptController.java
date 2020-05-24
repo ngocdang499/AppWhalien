@@ -1,5 +1,6 @@
 package Whalien;
 
+import Cryptosystems.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,11 +13,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Arc;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
+import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.NoSuchPaddingException;
+import java.io.*;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 
 
@@ -69,6 +77,10 @@ public class DecryptController extends Controller{
                 nextScene = "encryptUI.fxml";
                 title = "Encryption";
                 break;
+            case "hashBtn":
+                nextScene = "hashUI.fxml";
+                title = "Integrity Check";
+                break;
         }
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../FXML/"+nextScene));/* Exception */
@@ -103,9 +115,12 @@ public class DecryptController extends Controller{
     public void onKeyBtnClick(MouseEvent e) throws  Exception{
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(new Stage());
-        String path = selectedFile.getAbsolutePath();
-        if (!path.isBlank())
-            keyPath.setText(path);
+
+        if (selectedFile != null) {
+            String path = selectedFile.getAbsolutePath();
+            if (!path.isBlank())
+                keyPath.setText(path);
+        }
     }
 
     public void onOpenDirBtn(MouseEvent e) throws Exception {
@@ -215,6 +230,67 @@ public class DecryptController extends Controller{
                 }
             }
         }
+
+    }
+
+    @FXML
+    Label progressLb;
+
+    @FXML
+    Arc innerCircle;
+
+
+    public void onDecryptBtnClick(MouseEvent e) throws Exception {
+        int total = 0;
+
+        int idx = 0;
+
+        ArrayList<File> pickFile = new ArrayList<>();
+
+        for (Node btn : fileBox.getChildren()) {
+            if (btn.getId().contains("-pick")) {
+
+                String filePath = importFile.get(idx);
+                idx += 1;
+                File inFile = new File(filePath);
+                if(inFile.isFile()) {
+                    pickFile.add(inFile);
+                    total += inFile.length();
+                }
+            }
+        }
+
+        if (total == 0)
+            return;
+
+        if (menuBtn.getText().contains("Cryptosystems")) {
+            AlertBox aBox = new AlertBox();
+            aBox.display("Missing Information", "Please choose cryptosystem for decryption.");
+            return;
+        }
+
+        if (outPath.getText().isBlank()) {
+            AlertBox aBox = new AlertBox();
+            aBox.display("Missing Information", "Please input path to save decrypted file and key.");
+            return;
+        }
+
+        if (keyPath.getText().isBlank()) {
+            AlertBox aBox = new AlertBox();
+            aBox.display("Missing Information", "Please input key for decryption.");
+            return;
+        }
+
+        WriteProgress wp = new WriteProgress(pickFile, total, outPath.getText(), menuBtn.getText(), keyPath.getText(), Cipher.DECRYPT_MODE);
+
+        System.out.println(total);
+
+        // Kết nối thuộc tính progress.
+        progressLb.textProperty().unbind();
+        innerCircle.lengthProperty().unbind();
+        progressLb.textProperty().bind(wp.progressProperty().multiply(100).asString());
+        innerCircle.lengthProperty().bind(wp.progressProperty().multiply(360));
+        new Thread(wp).start();
 
     }
 }

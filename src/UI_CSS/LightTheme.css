@@ -325,3 +325,39 @@
     -fx-background-color: linear-gradient(#a884dd 0%, #8bacf1 100%);
 }
 
+.hash-file-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-radius:10;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: Cantarell;
+    -fx-pref-height: 230px;
+    -fx-max-height: 230px;
+    -fx-pref-width: 200px;
+    -fx-max-width: 200px;
+    -fx-text-fill: linear-gradient(#6910ca 0%, #2475fc 100%);
+    -fx-content-display: top;
+    -fx-alignment: center;
+}
+
+#hashButton {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-radius:10;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: Cantarell;
+    -fx-pref-height: 120px;
+    -fx-max-height: 120px;
+    -fx-pref-width: 100px;
+    -fx-max-width: 100px;
+    -fx-text-fill: linear-gradient(#6910ca 0%, #2475fc 100%);
+    -fx-content-display: top;
+    -fx-alignment: center;
+}
+
+#hashButton: hover {
+    -fx-underline: true;
+}
+

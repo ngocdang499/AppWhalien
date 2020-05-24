@@ -38,7 +38,7 @@
                               <Insets left="2.0" top="30.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="decryptBtn" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
+                        <Button fx:id="encryptBtn" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -50,11 +50,23 @@
                               <Insets left="2.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="encryptBtn" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
+                        <Button fx:id="decryptBtn" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Image/decrypt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="hashBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#onMenuBtnClick" prefHeight="36.0" prefWidth="36.0" styleClass="menu-button">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="28.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/hash1.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -136,8 +148,11 @@
                         </Line>
                         <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="28.0" prefWidth="360.0" text="Cryptosystems">
                           <items>
-                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="RSA" />
-                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="DES" />
+                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="RSA/ECB" />
+                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="DES/CBC" />
+                             <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="DES/ECB" />
+                             <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="AES/CBC" />
+                             <MenuItem mnemonicParsing="false" onAction="#onMenuItemClick" text="AES/ECB" />
                           </items>
                            <VBox.margin>
                               <Insets left="20.0" top="5.0" />
@@ -186,10 +201,10 @@
                                     <Font name="Cantarell Regular" size="16.0" />
                                  </font>
                               </Label>
-                              <Arc id="progressCircle" fill="#c21eff" layoutX="138.0" layoutY="146.0" length="270.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+                              <Arc id="progressCircle" fx:id="innerCircle" fill="#c21eff" layoutX="138.0" layoutY="146.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
                               <Circle id="innerCircle" fill="DODGERBLUE" layoutX="138.0" layoutY="146.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="56.0" />
                               <Circle id="outerCircle" fill="DODGERBLUE" layoutX="138.0" layoutY="145.0" opacity="0.45" radius="110.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label id="progressLb" alignment="CENTER" layoutX="57.0" layoutY="93.0" prefHeight="106.0" prefWidth="163.0" text="75%" textAlignment="CENTER" />
+                              <Label id="progressLb" fx:id="progressLb" alignment="CENTER" layoutX="57.0" layoutY="93.0" prefHeight="106.0" prefWidth="163.0" text="00.00" textAlignment="CENTER" textOverrun="CLIP" />
                               <ImageView fitHeight="148.0" fitWidth="270.0" layoutX="3.0" layoutY="80.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Image/blue-whale.png" />
@@ -197,14 +212,11 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <Label text="Key File" textFill="#c9a1a1">
-                           <font>
-                              <Font name="Cantarell Regular" size="16.0" />
-                           </font>
+                        <Button fx:id="genKeyBtn" disable="true" mnemonicParsing="false" onMouseClicked="#onGenKeyBtn" styleClass="option-button" text="Generate Key" textFill="#19d7e5">
                            <VBox.margin>
-                              <Insets top="37.0" />
+                              <Insets top="33.0" />
                            </VBox.margin>
-                        </Label>
+                        </Button>
                         <Line endX="251.25" styleClass="line">
                            <VBox.margin>
                               <Insets left="5.0" />
@@ -212,12 +224,12 @@
                         </Line>
                         <HBox prefHeight="21.0" prefWidth="275.0">
                            <children>
-                              <TextField disable="true" maxHeight="30.0" prefHeight="30.0" prefWidth="160.0" promptText="Path to key file" style="-fx-background-color: #213b72; -fx-border-color: #5270df;">
+                              <TextField fx:id="keyPath" disable="true" maxHeight="30.0" prefHeight="30.0" prefWidth="160.0" promptText="Path to key file" style="-fx-background-color: #213b72; -fx-border-color: #5270df;">
                                  <font>
                                     <Font name="Lato Medium" size="9.0" />
                                  </font>
                               </TextField>
-                              <Button disable="true" mnemonicParsing="false" styleClass="option-button" text="Browse Key" textFill="#5270df" />
+                              <Button fx:id="keyBtn" disable="true" mnemonicParsing="false" onMouseClicked="#onKeyBtnClick" styleClass="option-button" text="Browse Key" textFill="#5270df" />
                            </children>
                            <VBox.margin>
                               <Insets left="5.0" top="6.0" />
@@ -236,7 +248,7 @@
                               <Insets left="5.0" />
                            </VBox.margin>
                         </Line>
-                        <Button id="startBtn" mnemonicParsing="false" prefHeight="18.0" prefWidth="250.0" text="ENCRYPT">
+                        <Button id="startBtn" mnemonicParsing="false" onMouseClicked="#onEncryptBtnClick" prefHeight="18.0" prefWidth="250.0" text="ENCRYPT">
                            <VBox.margin>
                               <Insets left="5.0" top="6.0" />
                            </VBox.margin>

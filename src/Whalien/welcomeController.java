@@ -41,7 +41,7 @@ public class welcomeController
         Controller inputController = loader.getController();
         inputController.setTheme(theme);
 
-        stage.setTitle("Whalien - Encryption");
+        stage.setTitle("Whalien - DES");
         stage.setScene(new Scene(root, 800, 500));
         stage.show();
     }
